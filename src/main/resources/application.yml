@@ -1,0 +1,32 @@
+
+server:
+  port: 8000
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/cuxaud?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=UTC
+    password: wxb123456
+
+      #mysql8.0以后的加密方式为caching_sha2_password，所以必须用com.mysql.cj.jdbc.Driver,前提是pom里引入的mysql-connector-java必须为8.0.12的，8.0.13不行，会报错
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #如果是老版本的MySql,或者手动修改my.ini指定加密方式为mysql_native_password,则使用原来的Driver即可
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver: com.mysql.jdbc.Driver
+
+    #自己的连接池配置
+    hikari:
+      pool-name: user-1
+      minimum-idle: 30
+      maximum-pool-size: 30
+      connectionTimeout: 60000
+      idleTimeout: 60000
+      validationTimeout: 3000
+      maxLifetime: 60000
+      register-mbeans: true
+
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  config-location: classpath:/mybatis-config.xml
+  type-aliases-package: com.example.demo.entity
+
