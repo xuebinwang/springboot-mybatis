@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="insertUser" parameterType="user">
+        INSERT INTO user_t (userId,userName,userAge) VALUES (#{userId},#{userName},#{userAge});
+    </select>
+
+    <select id="getUserById" resultType= "user" parameterType="int">
+        select * from user_t where userId=#{userId}
+    </select>
+</mapper>
