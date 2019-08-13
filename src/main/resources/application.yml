@@ -7,14 +7,8 @@ spring:
     username: root
     url: jdbc:mysql://localhost:3306/cuxaud?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=UTC
     password: wxb123456
-
-      #mysql8.0ÒÔºóµÄ¼ÓÃÜ·½Ê½Îªcaching_sha2_password£¬ËùÒÔ±ØĞëÓÃcom.mysql.cj.jdbc.Driver,Ç°ÌáÊÇpomÀïÒıÈëµÄmysql-connector-java±ØĞëÎª8.0.12µÄ£¬8.0.13²»ĞĞ£¬»á±¨´í
-    #driver-class-name: com.mysql.cj.jdbc.Driver
-    #Èç¹ûÊÇÀÏ°æ±¾µÄMySql,»òÕßÊÖ¶¯ĞŞ¸Ämy.iniÖ¸¶¨¼ÓÃÜ·½Ê½Îªmysql_native_password,ÔòÊ¹ÓÃÔ­À´µÄDriver¼´¿É
-#    driver-class-name: com.mysql.cj.jdbc.Driver
     driver: com.mysql.jdbc.Driver
 
-    #×Ô¼ºµÄÁ¬½Ó³ØÅäÖÃ
     hikari:
       pool-name: user-1
       minimum-idle: 30
@@ -30,3 +24,13 @@ mybatis:
   config-location: classpath:/mybatis-config.xml
   type-aliases-package: com.example.demo.entity
 
+http:
+  maxTotal: 500
+  defaultMaxPerRoute: 300
+  #è®¾ç½®è¿æ¥è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’
+  connectTimeout: 10000
+  #http clilentä¸­ä»connetcion poolä¸­è·å¾—ä¸€ä¸ªconnectionçš„è¶…æ—¶æ—¶é—´,å•ä½æ¯«ç§’
+  connectionRequestTimeout: 500
+  #è¯·æ±‚è·å–æ•°æ®çš„è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’ã€‚ å¦‚æœè®¿é—®ä¸€ä¸ªæ¥å£ï¼Œå¤šå°‘æ—¶é—´å†…æ— æ³•è¿”å›æ•°æ®ï¼Œå°±ç›´æ¥æ”¾å¼ƒæ­¤æ¬¡è°ƒç”¨
+  socketTimeout: 15000
+  staleConnectionCheckEnabled: true
